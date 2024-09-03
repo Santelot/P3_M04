@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P3-M04</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P3-M04</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0: Revisión de Misión -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('revision_mision')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión de Misión</span>
+            <span>⏰ Tiempo: No especificado</span>
+        </div>
+        <div class="subtitle">Preparación de materiales y verificación de acceso a Scratch</div>
+        <div class="summary">Asegurarse de que todas las herramientas estén listas para comenzar la misión.</div>
+    </div>
+    <div id="revision_mision" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1: Proyectar la diapositiva 1 "Materiales y preparación de la Misión" y verificar que las computadoras estén encendidas y funcionando, y que Scratch esté accesible en cada una.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, es hora de prepararnos para nuestra misión! Vamos a asegurarnos de que todas nuestras herramientas están listas para la aventura que se avecina. ¡Todo debe estar perfecto antes de comenzar!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1: Saludo y Ritual Gnius Club -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual_gnius')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Inicio de la clase y preparación del ambiente</div>
+        <div class="summary">Saludo inicial, evaluación del estado de ánimo, ejercicio de agradecimiento y presentación de los objetivos de la misión.</div>
+    </div>
+    <div id="saludo_ritual_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 2 "Gnius Club" e iniciar la clase con un saludo temático relacionado con Scratch.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Hola, Genios! Bienvenidos a otra aventura en el increíble mundo de Scratch. Hoy vamos a descubrir juntos nuevos secretos para mejorar nuestros proyectos. ¿Están listos para ser los mejores programadores?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 3 "Estado de Ánimo" y pedir a los estudiantes que expresen su estado de ánimo mediante un gesto físico.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de empezar, quiero saber cómo se sienten hoy. Si están emocionados, levanten ambos pulgares. Si necesitan un poco más de energía, pongan las manos en sus cabezas. ¡Vamos a ver cómo están esos genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 4 "Ritual de Agradecimiento" y guiar a los estudiantes en un breve ejercicio de agradecimiento.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Tomémonos un momento para pensar en algo por lo que estamos agradecidos hoy. ¡Gracias por estar aquí y por todas las ganas que ponen en cada misión, Genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 5 "Objetivos de la Misión" y mostrar a los estudiantes los tres objetivos principales que se alcanzarán durante la clase.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy vamos a enfocarnos en tres puntos clave: 1. Entender cómo usar los bloques avanzados de control en Scratch. 2. Ver ejemplos reales de cómo estos bloques mejoran los proyectos. 3. Discutir cómo podemos usar estos bloques en nuestros propios proyectos. ¡Será una misión increíble!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2: Innovación del Día -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Presentación de conceptos innovadores en programación</div>
+        <div class="summary">Exploración de los comandos "esperar hasta" y "repetir hasta" mediante un video y reflexión sobre su aplicación.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 6 "Innovación del Día" y presentar brevemente el contexto del video antes de reproducirlo.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy vamos a explorar dos comandos muy útiles en programación: 'esperar hasta' y 'repetir hasta'. Para entender cómo se aplican en el mundo real, vamos a ver un video que muestra cómo un sistema automatizado espera hasta que se cumpla una condición específica antes de actuar. ¡Esto es lo que hace la tecnología tan poderosa!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar la siguiente diapositiva con el video.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Miremos el video y veamos cómo estos comandos se usan en la vida real!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 7 "Reflexión sobre la Innovación" y hacer preguntas a los estudiantes para conectar lo visto en el video con los conceptos que aprenderán en Scratch.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¿Qué les pareció? ¿Cómo creen que podríamos usar estos comandos en nuestros proyectos de Scratch? ¿Qué otros usos de 'esperar hasta' o 'repetir hasta' pueden imaginar?"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3: Brain Gym -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym</span>
+            <span>⏰ Tiempo: 10 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicios mentales y programación en Scratch</div>
+        <div class="summary">Introducción y aplicación de los bloques "esperar hasta" y "repetir hasta" en Scratch.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 8 "Brain Gym: Easter Egg" y anunciar la actividad de Brain Gym y el Easter Egg escondido en la lección.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de empezar a descubrir cómo los bloques 'esperar hasta' y 'repetir hasta' pueden hacer que nuestros proyectos en Scratch sean más inteligentes, vamos a ejercitar nuestros cerebros. Recuerden, dentro de lo que voy a explicar, hay un Easter Egg. Al final de la clase haré una pregunta, y quien la responda correctamente ganará un Mon-e. ¡Presten mucha atención!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 9 "Bloque Avanzado: 'Esperar hasta'" y explicar cómo se utiliza este bloque en Scratch para hacer que un personaje espere hasta que se cumpla una condición.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"El bloque 'esperar hasta' es como un guardián. Este bloque le dice a Scratch que espere hasta que pase algo específico, como que un personaje llegue a cierto lugar o que presionemos una tecla. ¿Qué creen que podría pasar si usamos este bloque en nuestros proyectos?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 10 "Añadir Acción: 'Mover después de esperar'" y guiar a los estudiantes en cómo añadir un bloque de movimiento para que el personaje actúe después de cumplir la condición.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a ver cómo podemos hacer que un personaje se mueva después de que se cumpla la condición que configuramos con 'esperar hasta'. Arrastren el bloque 'mover 10 pasos' desde la categoría de Movimiento y conéctenlo debajo de 'esperar hasta'. ¡Ahora el personaje se moverá cuando la condición se cumpla!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 11 "Bloque Avanzado: 'Repetir hasta'" y explicar cómo se utiliza este bloque en Scratch para repetir una acción hasta que se cumpla una condición.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"El bloque 'repetir hasta' es un poco diferente. En lugar de esperar, este bloque le dice a Scratch que siga haciendo algo una y otra vez hasta que algo específico ocurra, como cuando un personaje sigue caminando hasta llegar a un muro. ¡Imaginemos qué podríamos hacer con este bloque!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar la diapositiva 12 "Añadir Acción: 'Mover continuamente hasta...'" y guiar a los estudiantes en cómo utilizar este bloque para crear una acción repetitiva en un proyecto Scratch.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a hacer que un personaje siga moviéndose hasta que llegue al borde del escenario. Para hacerlo, arrastren el bloque 'repetir hasta' y pónganlo en su proyecto. Luego, conecten un bloque 'mover 10 pasos' dentro del bucle. Así, el personaje seguirá moviéndose hasta que toque el borde."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1.5 minutos): Proyectar la diapositiva 13 "Iniciar el Programa" y guiar a los estudiantes para que comprendan cómo comenzar su proyecto en Scratch al presionar la banderita verde.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, vamos a asegurarnos de que todo nuestro programa se inicie al presionar la banderita verde. Este bloque es como el interruptor que enciende toda la acción. ¡Veamos cómo se hace!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1.5 minutos): Proyectar la diapositiva 14 "Interacción entre Personajes" y demostrar cómo usar "repetir hasta" para crear una interacción entre dos personajes en Scratch.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Es momento de hacer que nuestros personajes interactúen. Vamos a agregar un segundo personaje, que en este caso será un dinosaurio, y usar 'repetir hasta' para que el primer personaje se mueva hacia el dinosaurio. ¡Esto puede hacer nuestros proyectos mucho más interesantes!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (1.5 minutos): Proyectar la diapositiva 15 "Reflexión sobre la Programación" y guiar a los estudiantes en una breve reflexión sobre cómo estos bloques pueden mejorar sus proyectos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, ahora que entendemos cómo funcionan estos bloques, pensemos en cómo podríamos usarlos en nuestros juegos! ¿Cómo podrían estos bloques hacer que nuestros proyectos sean más dinámicos y divertidos?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (1.5 minutos): Proyectar la diapositiva 16 "Curiosidades sobre Programación" y mencionar un dato histórico relacionado con los ciclos en programación, sin indicarlo como el Easter Egg.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¿Sabían que los primeros lenguajes de programación utilizaban tarjetas perforadas para crear ciclos repetitivos? ¡Imaginen tener que programar un 'repetir hasta' sin una computadora como la nuestra!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4: State Change -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>🧘 Actividad 4: State Change</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicios de transición mental hacia el uso de Scratch</div>
+        <div class="summary">Actividades para conectar la mente con la actividad de Scratch a través de movimientos y visualización.</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 17 "State Change: Dibujando en el Aire" y explicar brevemente que realizarán un ejercicio que conectará su mente con la actividad de Scratch.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, es hora de una pequeña activación para preparar nuestras mentes para el dibujo en Scratch! Vamos a hacer un ejercicio llamado 'Dibujando en el Aire'. Esto nos ayudará a pensar en las formas que usaremos en nuestro proyecto."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 18 "Dibuja un Círculo" y guiar a los estudiantes a trazar un círculo grande en el aire con su dedo, simulando la acción de dibujar en Scratch.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Primero, imaginen que su dedo es un pincel y dibujen un gran círculo en el aire. ¡Este círculo podría ser la cabeza de un personaje o el cuerpo de un animal en Scratch!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 19 "Dibuja un Cuadrado" y guiar a los estudiantes a trazar un cuadrado en el aire, conectando la forma con lo que podrán dibujar en Scratch.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, tracemos un cuadrado en el aire. Este podría ser la base de una casa o el cuerpo de un robot. ¡Dejen volar su imaginación!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 20 "Dibuja una Línea" y guiar a los estudiantes a trazar una línea recta en el aire, concluyendo el ejercicio.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Por último, dibujen una línea recta en el aire. Esta línea podría ser el suelo en el que nuestros personajes se moverán. ¡Están listos para crear en Scratch!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5: Team Gnius -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>🤝 Actividad 5: Team Gnius</span>
+            <span>⏰ Tiempo: 6.5 minutos</span>
+        </div>
+        <div class="subtitle">Colaboración en equipo para lograr los objetivos de la misión</div>
+        <div class="summary">Organización en equipos, asignación de roles y trabajo colaborativo en Scratch.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 21 "Formación de Equipos" y organizar a los estudiantes en equipos de 4, explicando los roles y asignando uno a cada miembro: Director de Equipo, Programador, Diseñador, Presentador.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, es hora de trabajar en equipo! Vamos a formar equipos de 4, donde cada uno tendrá un rol específico. Esto les ayudará a colaborar mejor y a aprovechar las habilidades de todos. ¿Listos para descubrir su rol?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar la diapositiva 22 "Roles en el Equipo" y detallar las responsabilidades de cada rol: Director de Equipo, Programador, Diseñador, Presentador.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Cada rol tiene una función clave para que el equipo tenga éxito. El Director de Equipo coordina el trabajo de todos. El Programador se encarga del código en Scratch. El Diseñador se ocupa de los aspectos visuales. Y el Presentador será quien muestre el trabajo del equipo a la clase. ¡Trabajen juntos y creen algo increíble!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (3 minutos): Supervisar las discusiones y el trabajo en equipo, asegurando que todos los estudiantes tengan la oportunidad de contribuir.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Recuerden, Genios, cada rol es importante. Asegúrense de escuchar las ideas de todos y colaborar para que su proyecto sea lo mejor posible. ¡El trabajo en equipo siempre nos lleva más lejos!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 23 "Revisión de Objetivos" y guiar a los estudiantes para que revisen si han logrado los objetivos propuestos en su trabajo en equipo.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de concluir, revisemos nuestros objetivos de equipo. ¿Lograron colaborar y cumplir con sus roles? ¿Trabajaron juntos para crear algo especial en Scratch? ¡Si es así, misión cumplida!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6: Challenge -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏆 Actividad 6: Challenge</span>
+            <span>⏰ Tiempo: 22 minutos</span>
+        </div>
+        <div class="subtitle">Desafío de programación en equipo en Scratch</div>
+        <div class="summary">Aplicación práctica de los bloques "esperar hasta" y "repetir hasta" en un proyecto de grupo.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 24 "Challenge del Día" y explicar el objetivo del desafío: aplicar los bloques "esperar hasta" y "repetir hasta" en un proyecto grupal en Scratch.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, es hora de poner en práctica lo que hemos aprendido! Hoy, en sus equipos, van a crear un proyecto en Scratch donde usarán los bloques 'esperar hasta' y 'repetir hasta'. Su objetivo es hacer que un personaje realice una acción específica, como moverse hacia un objeto o esperar a que ocurra un evento. ¡Manos a la obra!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (15 minutos): Proyectar la diapositiva 25 "Colaboración en Acción" con el timer de 15 minutos y caminar por el aula, ofreciendo apoyo y respondiendo preguntas mientras los estudiantes trabajan en equipo.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Trabajen juntos para decidir cómo van a utilizar los bloques 'esperar hasta' y 'repetir hasta'. Recuerden que cada miembro del equipo debe aportar sus ideas y ayudar en la implementación. ¡Este es un esfuerzo de equipo, Genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (6 minutos): Proyectar la diapositiva 26 "Presenta tu Proyecto" y pedir a los equipos que preparen una breve presentación de su proyecto, explicando cómo aplicaron los bloques aprendidos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Es hora de compartir lo que han creado! Cada equipo va a presentar su proyecto, explicando cómo usaron los bloques 'esperar hasta' y 'repetir hasta'. Cuenten cómo llegaron a su idea y qué problemas resolvieron juntos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 27 "Revisión de Objetivos" y guiar a los equipos para que revisen si han logrado los objetivos propuestos en su proyecto en equipo.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de concluir, revisemos nuestros objetivos. ¿Lograron implementar los bloques 'esperar hasta' y 'repetir hasta'? ¿Colaboraron bien en equipo? ¡Si es así, misión cumplida!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7: Easter Egg -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">
+            <span>🥚 Actividad 7: Easter Egg</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Descubrimiento del Easter Egg y actividad sorpresa</div>
+        <div class="summary">Actividad interactiva donde los estudiantes buscan el Easter Egg para ganar Mon-e.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 28 con la imagen de un Easter Egg y anunciar que viene la actividad del Easter Egg, donde podrán ganar Mon-e.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, ha llegado el momento del Easter Egg! Presten mucha atención, porque si responden correctamente la pregunta que les voy a hacer, podrán ganar un Mon-e. ¡Estén listos!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar la diapositiva 29 "Pregunta del Día" y formular la pregunta abierta sobre la historia de la programación. Dejar que los alumnos den su respuesta acercándose para que la digan en voz baja, permitiendo que no compartan la respuesta con todos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Durante nuestra actividad de Brain Gym, les mencioné algo interesante sobre la historia de la programación. La pregunta es: ¿Qué se utilizaba en las primeras computadoras para poder hacer ciclos repetitivos, como el 'repetir hasta'? ¡Los tres alumnos en responder correctamente ganarán un Mon-e!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 30 "Respuesta del Easter Egg" y explicar cómo se utilizaban las tarjetas perforadas en los primeros lenguajes de programación para crear ciclos repetitivos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"La respuesta correcta es que, en los primeros lenguajes de programación, se utilizaban tarjetas perforadas para crear ciclos repetitivos, como el 'repetir hasta', sin una computadora como las que tenemos ahora. ¡Imaginen tener que programar todo eso sin poder ver el resultado al instante!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8: Honor de Dojo -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏅 Actividad 8: Honor de Dojo</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión y cierre de la misión</div>
+        <div class="summary">Reflexión sobre lo aprendido, reconocimiento del esfuerzo, y preparación del aula para la próxima clase.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 31 "Reflexión y Feedback" y facilitar un momento de reflexión donde los estudiantes puedan compartir lo que más disfrutaron y lo que aprendieron.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de terminar nuestra misión de hoy, vamos a reflexionar sobre lo que hemos hecho. ¿Qué fue lo que más les gustó? ¿Qué aprendieron de esta actividad? ¡Compartan algo positivo!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 32 "Honrar el Dojo" y asegurar que todos los estudiantes reciban reconocimiento por su esfuerzo.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy hicieron un trabajo increíble, Genios. ¡Sus proyectos fueron fantásticos! Cada uno de ustedes hizo un gran esfuerzo, y eso es lo que importa. ¡Felicidades!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1.5 minutos): Guiar a los estudiantes para que ordenen el espacio de trabajo y dejen todo listo para la próxima clase.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, es momento de honrar nuestro Dojo. Vamos a asegurarnos de que el espacio quede limpio y ordenado para la siguiente misión. Cada equipo se encargará de su área. ¡Gracias por mantener todo en su lugar!"</div>
+        </div>
+    </div>
+</div>
+    </div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+</body>
+</html>
